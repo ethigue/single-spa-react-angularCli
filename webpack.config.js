@@ -23,9 +23,9 @@ module.exports = {
           target: "http://localhost:4201",
           pathRewrite: {"/apps/home" : ""}
       },
-      "/apps/app1": {
-        target: "http://localhost:4202",
-        pathRewrite: {"/apps/app1" : ""}
+      "/apps/app2": {
+        target: "http://localhost:4203",
+        pathRewrite: {"/apps/app2" : ""}
       }
     }
   },

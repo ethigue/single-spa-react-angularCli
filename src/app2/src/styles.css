@@ -2,6 +2,12 @@
 .todolist li label {
     margin-left: 0;
   }
+  body {
+      max-width: 100% !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
   
   .logout {
      cursor: pointer;

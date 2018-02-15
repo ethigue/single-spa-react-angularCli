@@ -1,4 +1,4 @@
-menu {
+menu-root {
     position: absolute;
     top: 0;
     left: 0;
@@ -6,8 +6,9 @@ menu {
     height: 60px;
 }
 
-home,
-app2 {
+home-root,
+app2-root,
+app1-root {
     margin-top: 70px;
     display: block;
 }

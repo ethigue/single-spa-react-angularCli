@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const lodash = require('lodash');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: __dirname + '/src/main.js',
@@ -26,6 +27,10 @@ module.exports = {
       "/apps/app2": {
         target: "http://localhost:4203",
         pathRewrite: {"/apps/app2" : ""}
+      },
+      "/app1": {
+        target: "http://localhost:9001",
+        pathRewrite: {"^/app1" : ""}
       }
     }
   },
@@ -67,6 +72,9 @@ module.exports = {
       name: 'common',
       minChunks: module => module.context && module.context.indexOf('node_modules') !== -1
     }),
+    CopyWebpackPlugin([
+      {from: path.resolve(__dirname, 'libs/system.js')},
+    ]),
   ],
 };
 

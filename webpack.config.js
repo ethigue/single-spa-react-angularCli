@@ -16,21 +16,25 @@ module.exports = {
     publicPath: '/build/',
     contentBase: './',
     proxy: {
-      "/apps/menu": {
+      "/menu": {
         target: "http://localhost:4200",
-        pathRewrite: {"/apps/menu" : ""}
+        pathRewrite: {"/menu" : ""}
       },
-      "/apps/home": {
+      "/home": {
           target: "http://localhost:4201",
-          pathRewrite: {"/apps/home" : ""}
+          pathRewrite: {"/home" : ""}
       },
-      "/apps/app2": {
+      "/app2": {
         target: "http://localhost:4203",
-        pathRewrite: {"/apps/app2" : ""}
+        pathRewrite: {"/app2" : ""}
       },
       "/app1": {
         target: "http://localhost:9001",
         pathRewrite: {"^/app1" : ""}
+      },
+      "/app3": {
+        target: "http://localhost:9002",
+        pathRewrite: {"^/app3" : ""}
       }
     }
   },

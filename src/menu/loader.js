@@ -2,7 +2,7 @@ import singleSpaAngularCli from 'single-spa-angular-cli';
 
 const lifecycles = singleSpaAngularCli({
     selector: 'menu-root',
-    baseScriptUrl: '/apps/menu',
+    baseScriptUrl: '/menu',
     scripts: [
         'inline.bundle.js',
         'polyfills.bundle.js',

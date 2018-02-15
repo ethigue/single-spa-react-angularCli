@@ -2,7 +2,7 @@ import singleSpaAngularCli from 'single-spa-angular-cli';
 
 const lifecycles = singleSpaAngularCli({
     selector: 'home-root',
-    baseScriptUrl: '/apps/home',
+    baseScriptUrl: '/home',
     scripts: [
         'inline.bundle.js',
         'polyfills.bundle.js',

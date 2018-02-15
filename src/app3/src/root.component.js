@@ -22,14 +22,14 @@ export default class Root extends React.Component {
 
     render() {
 
-        let ret = <app1-root></app1-root>;
+        let ret = <app3-root></app3-root>;
 
         if (this.state.store && this.state.globalEventDistributor) {
             ret =
                 <Provider store={this.state.store}>
                     <div style={{marginTop: 100}}>
                         <img src={reactLogo} style={{width: 100}}/> <br />
-                        This was rendered by App1, which is written in React.
+                        This was rendered by App3, which is written in React.
                         <Counter globalEventDistributor={this.state.globalEventDistributor}/>
                     </div>
                 </Provider>

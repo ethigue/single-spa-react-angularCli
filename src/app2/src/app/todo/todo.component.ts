@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import {Todo} from './todo';
 import {TodoService} from './todo.service';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -18,7 +18,8 @@ export class TodoComponent implements OnInit {
   constructor(
     private todoService: TodoService, 
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cd: ChangeDetectorRef
   ) {
     this.username = localStorage.getItem('username');
   }
@@ -68,7 +69,8 @@ export class TodoComponent implements OnInit {
       this.todos = todos.map(todo => todo);
       this.filterStatus(filter);
       this.calculateActiveTasks();
-      console.log(JSON.stringify(this.todos))
+      console.log(JSON.stringify(this.todos));
+      this.cd.detectChanges();
     });
   }
 

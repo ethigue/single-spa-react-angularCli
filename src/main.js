@@ -8,11 +8,11 @@ async function init() {
     const globalEventDistributor = new GlobalEventDistributor();
     let store = {};
     
-    await mainRegisterApplication('menu', () => import('./menu/loader.js'), singleSpaAngularCliRouter.hashPrefix('/**'));
+    await mainRegisterApplication('menu', () => SystemJS.import('/menu/loader.bundle.js'), singleSpaAngularCliRouter.hashPrefix('/**'));
     start();
 
-    registerApplication('home', () => import('./home/loader.js'), singleSpaAngularCliRouter.hashPrefix('/home', true));
-    registerApplication('app2', () => import('./app2/loader.js'), singleSpaAngularCliRouter.hashPrefix('/app2', true));
+    registerApplication('home', () => SystemJS.import('/home/loader.bundle.js'), singleSpaAngularCliRouter.hashPrefix('/home', true));
+    registerApplication('app2', () => SystemJS.import('/app2/loader.bundle.js'), singleSpaAngularCliRouter.hashPrefix('/app2', true));
     registerApplication('app1', () => SystemJS.import('/app1/main.js'), singleSpaAngularCliRouter.hashPrefix('/app1', true), await loadStore( '/app1/store.js', globalEventDistributor));
     registerApplication('app3', () => SystemJS.import('/app3/main.js'), singleSpaAngularCliRouter.hashPrefix('/app2', true), await loadStore( '/app3/store.js', globalEventDistributor));
 }

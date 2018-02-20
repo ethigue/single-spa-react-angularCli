@@ -13,14 +13,14 @@
             "appUrl": "/home/loader.bundle.js",
             "route": "/home",
             "storeUrl": null,
-            "isMain": false
+            "isMain": true
         },
         {
             "appName": "app2",
             "appUrl": "/app2/loader.bundle.js",
             "route": "/app2",
             "storeUrl": null,
-            "isMain": false
+            "isMain": true
         },
         {
             "appName": "app1",

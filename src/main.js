@@ -1,23 +1,39 @@
 import { registerApplication, start } from 'single-spa';
 import { mainRegisterApplication, singleSpaAngularCliRouter } from 'single-spa-angular-cli/lib/utils';
+import { eachSeries } from 'async';
 import { GlobalEventDistributor } from './globalEventDistributor'
+import appStructure from '../mock/appStructure.json';
 import 'babel-polyfill';
 import 'zone.js';
 
-async function init() {
+function init() {
     const globalEventDistributor = new GlobalEventDistributor();
     let store = {};
-    
-    await mainRegisterApplication('menu', () => SystemJS.import('/menu/loader.bundle.js'), singleSpaAngularCliRouter.hashPrefix('/**'));
     start();
+    //load the apps
+    eachSeries(appStructure.items, async (element, callback) => {
+        const { appName, appUrl, route, storeUrl, isMain } = element;
+        let store;
+        //if not cli use loadNotCli function
+        const registerApp = isMain ? mainRegisterApplication : loadNotCli;
 
-    registerApplication('home', () => SystemJS.import('/home/loader.bundle.js'), singleSpaAngularCliRouter.hashPrefix('/home', true));
-    registerApplication('app2', () => SystemJS.import('/app2/loader.bundle.js'), singleSpaAngularCliRouter.hashPrefix('/app2', true));
-    registerApplication('app1', () => SystemJS.import('/app1/main.js'), singleSpaAngularCliRouter.hashPrefix('/app1', true), await loadStore( '/app1/store.js', globalEventDistributor));
-    registerApplication('app3', () => SystemJS.import('/app3/main.js'), singleSpaAngularCliRouter.hashPrefix('/app2', true), await loadStore( '/app3/store.js', globalEventDistributor));
+        if (storeUrl) {
+           store = await loadStore(storeUrl, globalEventDistributor);
+        }
+        registerApp(appName, () => SystemJS.import(appUrl), singleSpaAngularCliRouter.hashPrefix(route), store).then(() => {
+            callback();
+        });
+    }, err => {
+        if (err) console.log('Is not possible to mount the apps', err);
+    });
 }
 
-async function loadStore (storeURL, globalEventDistributor) {
+const loadNotCli = (appName, importFunc, routeFunc, store) => {
+    registerApplication(appName, importFunc, routeFunc, store)
+    return new Promise(resolve => resolve() );
+};
+
+const loadStore = async (storeURL, globalEventDistributor) => {
     // import the store module
     const storeModule = storeURL ? await SystemJS.import(storeURL) : {storeInstance: null};
 

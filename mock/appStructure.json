@@ -3,35 +3,35 @@
     "items": [
         {
             "appName": "menu",
-            "appUrl": "/menu/loader.bundle.js",
+            "appUrl": "http://localhost:4200/loader.bundle.js",
             "route": "/**",
             "storeUrl": null,
             "isMain": true
         },
         {
             "appName": "home",
-            "appUrl": "/home/loader.bundle.js",
+            "appUrl": "http://localhost:4201/loader.bundle.js",
             "route": "/home",
             "storeUrl": null,
             "isMain": true
         },
         {
             "appName": "app2",
-            "appUrl": "/app2/loader.bundle.js",
+            "appUrl": "http://localhost:4203/loader.bundle.js",
             "route": "/app2",
             "storeUrl": null,
             "isMain": true
         },
         {
             "appName": "app1",
-            "appUrl": "./app1/main.js",
+            "appUrl": "http://localhost:9001/main.js",
             "route": "/app1",
             "storeUrl": "/app1/store.js",
             "isMain": false
         },
         {
             "appName": "app3",
-            "appUrl": "./app3/main.js",
+            "appUrl": "http://localhost:9002/main.js",
             "route": "/app2",
             "storeUrl": "/app3/store.js",
             "isMain": false

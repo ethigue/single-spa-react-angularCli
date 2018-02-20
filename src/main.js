@@ -30,7 +30,7 @@ function init() {
 
 const loadNotCli = (appName, importFunc, routeFunc, store) => {
     registerApplication(appName, importFunc, routeFunc, store)
-    return new Promise(resolve => resolve() );
+    return Promise.resolve();
 };
 
 const loadStore = async (storeURL, globalEventDistributor) => {

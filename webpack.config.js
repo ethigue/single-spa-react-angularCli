@@ -30,11 +30,11 @@ module.exports = {
       },
       "/app1": {
         target: "http://localhost:9001",
-        pathRewrite: {"^/app1" : ""}
+        pathRewrite: {"/app1" : ""}
       },
       "/app3": {
         target: "http://localhost:9002",
-        pathRewrite: {"^/app3" : ""}
+        pathRewrite: {"/app3" : ""}
       }
     }
   },

@@ -5,8 +5,11 @@
   "scripts": {
     "ng": "ng",
     "bundle-loader": "webpack",
-    "start": "npm run bundle-loader && ng serve",
-    "build": "npm run bundle-loader && ng build --prod",
+    "prod-server": "npm run build && node server.js",
+    "prod-server-aot": "npm run build && node server.js",
+    "start": "npm run bundle-loader && ng serve --port=4201",
+    "build": "npm run bundle-loader -- --env.NODE_ENV=production && ng build --prod --extract-css=false && node scripts_list_creator.js",
+    "build-aot": "npm run bundle-loader -- --env.NODE_ENV=production && ng build --prod --extract-css=false --aot && node scripts_list_creator.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -27,7 +30,8 @@
     "@angular/router": "^5.2.5",
     "core-js": "^2.4.1",
     "redux": "^3.7.2",
-    "rxjs": "^5.5.6"
+    "rxjs": "^5.5.6",
+    "single-spa-angular-cli": "^0.1.10"
   },
   "devDependencies": {
     "@angular/cli": "1.6.8",
@@ -37,6 +41,8 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^6.0.101",
     "codelyzer": "^4.0.1",
+    "express": "^4.16.2",
+    "file-system": "^2.2.2",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
@@ -45,6 +51,8 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
+    "regex-sort": "^1.0.6",
+    "replace": "^0.3.0",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"

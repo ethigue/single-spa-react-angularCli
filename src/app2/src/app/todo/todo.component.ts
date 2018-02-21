@@ -93,7 +93,7 @@ export class TodoComponent implements OnInit {
     }
   }
 
-  clearCompleted() {
+  clearCompleted(e) {
     this.todos = this.todos.filter(todo => !todo.complete);
     this.todoService.deleteCompleted().then(result => {
       if (Object.keys(result).length === 0){

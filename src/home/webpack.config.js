@@ -21,7 +21,7 @@ module.exports = env => {
     },
     output: {
       path: __dirname + "/lib",
-      filename: "loader.min.js",
+      filename: "loader.js",
       libraryTarget: 'amd'
     },
     plugins: plugins,

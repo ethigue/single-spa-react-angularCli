@@ -14,13 +14,13 @@ function init() {
     eachSeries(appStructure.items, async (element, callback) => {
         const { appName, appUrl, route, storeUrl, isMain } = element;
         let store;
-        //if not cli use loadNotCli function
-        const registerApp = isMain ? mainRegisterApplication : loadNotCli;
+        
+        const registerApp = isMain ? mainRegisterApplication : loadNotMain;
 
         if (storeUrl) {
            store = await loadStore(storeUrl, globalEventDistributor);
         }
-        registerApp(appName, () => SystemJS.import(appUrl), singleSpaAngularCliRouter.hashPrefix(route), store).then(() => {
+        registerApp(appName, () => SystemJS.import(appUrl), singleSpaAngularCliRouter.hashPrefix(route, true), store).then(() => {
             callback();
         });
     }, err => {
@@ -28,7 +28,7 @@ function init() {
     });
 }
 
-const loadNotCli = (appName, importFunc, routeFunc, store) => {
+const loadNotMain = (appName, importFunc, routeFunc, store) => {
     registerApplication(appName, importFunc, routeFunc, store)
     return Promise.resolve();
 };

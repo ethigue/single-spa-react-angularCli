@@ -9,7 +9,12 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        {
+          "input": "../lib",
+          "glob": "**/loader.js",
+          "output": "."
+        }
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -22,7 +27,6 @@
         "styles.css"
       ],
       "scripts": [
-        { "input": "../lib/loader.min.js", "output": "loader" }
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

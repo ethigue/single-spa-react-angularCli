@@ -3,24 +3,24 @@
     "items": [
         {
             "appName": "menu",
-            "appUrl": "http://localhost:4200/loader.bundle.js",
+            "appUrl": "http://localhost:4200/loader.js",
             "route": "/**",
             "storeUrl": null,
             "isMain": true
         },
         {
             "appName": "home",
-            "appUrl": "http://localhost:4201/loader.bundle.js",
+            "appUrl": "http://localhost:4201/loader.js",
             "route": "/home",
             "storeUrl": null,
-            "isMain": true
+            "isMain": false
         },
         {
             "appName": "app2",
-            "appUrl": "http://localhost:4203/loader.bundle.js",
+            "appUrl": "http://localhost:4203/loader.js",
             "route": "/app2",
             "storeUrl": null,
-            "isMain": true
+            "isMain": false
         },
         {
             "appName": "app1",

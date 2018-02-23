@@ -2,7 +2,9 @@
 
 # compiled output
 /dist
-/lib
+/lib/*.js
+/lib/*.json
+/dist-server
 /tmp
 /out-tsc
 

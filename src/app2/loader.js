@@ -2,15 +2,15 @@ import singleSpaAngularCli from 'single-spa-angular-cli';
 
 const prod = NODE_ENV;
 
-let scripts = [
-    'inline.bundle.js',
-    'polyfills.bundle.js',
-    'styles.bundle.js',
-    'vendor.bundle.js',
-    'main.bundle.js'];
+let scripts = require("./bundle_list.json");;
 
 if (prod) {
-    scripts = "DYNAMIC_SCRIPTS_LIST".split(",");
+    try {
+        scripts = require("./lib/bundle_list.json");
+    }
+    catch (e) {
+        scripts = []
+    }
 }
 
 const lifecycles = singleSpaAngularCli({

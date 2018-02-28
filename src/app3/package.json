@@ -1,14 +1,12 @@
 {
-  "name": "single-spa-portal-example-react",
-  "version": "1.0.0",
-  "description": "React App that will be bundled into a library to be loaded on demand by a simpleSPA Portal App",
+  "name": "app3-react-spa",
+  "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
-    "watch": "webpack-dev-server --port 9002",
+    "start": "webpack-dev-server --port 9002",
     "build": "webpack -p --progress"
   },
-  "keywords": [],
-  "author": "Michael Ruecker",
-  "license": "MIT",
+  "private": true,
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

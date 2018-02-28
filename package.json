@@ -1,22 +1,15 @@
 {
   "version": "0.0.0",
-  "name": "single-spa-angular-portal",
-  "description": "This is an example of examples on how to use [single-spa](https://github.com/joeldenning/single-spa) in a variety of contexts. Right now there are examples with the following technologies:",
+  "name": "microfrontends-portal",
+  "description": "",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "rimraf build && yarn ember-install && yarn build-ember && yarn build-vanilla",
     "build-webpack": "webpack --config webpack.config.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+git@github.com:PlaceMe-SAS/single-spa-examples.git"
-  },
-  "author": "Robin Coma Delperier",
+  "private": true,
+  "author": "Orlando De Mauro",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/PlaceMe-SAS/single-spa-examples/issues"
-  },
-  "homepage": "https://github.com/PlaceMe-SAS/single-spa-examples#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.3",

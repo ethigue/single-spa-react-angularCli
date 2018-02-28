@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import EventBus from 'eventing-bus/lib/window_event_stream';
+import eventsConstants from "../../../mock/events.json";
 
 class Counter extends React.Component {
 
@@ -12,11 +14,16 @@ class Counter extends React.Component {
     };
 
     globalIncrement = () => {
-        this.props.globalEventDistributor.dispatch({ type: 'INCREMENT' });
+        this.props.globalStoreEventDistributor.dispatch({ type: 'INCREMENT' });
     };
 
     globalDecrement = () => {
-        this.props.globalEventDistributor.dispatch({ type: 'DECREMENT' });
+        this.props.globalStoreEventDistributor.dispatch({ type: 'DECREMENT' });
+    };
+
+    
+    dispatchChangePath = () => {
+        EventBus.publish(eventsConstants.CHANGEPATH, "app2");
     };
 
     render() {
@@ -40,7 +47,7 @@ class Counter extends React.Component {
                     &nbsp;Send a <b>global</b> decrement event. This will increase the counter for the current app and all
                     other apps that listen to this event. <br/>
                 </div>
-
+                <button onClick={this.dispatchChangePath}>change path</button>
             </div>
         )
     }

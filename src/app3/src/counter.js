@@ -12,11 +12,11 @@ class Counter extends React.Component {
     };
 
     globalIncrement = () => {
-        this.props.globalEventDistributor.dispatch({ type: 'INCREMENT' });
+        this.props.globalStoreEventDistributor.dispatch({ type: 'INCREMENT' });
     };
 
     globalDecrement = () => {
-        this.props.globalEventDistributor.dispatch({ type: 'DECREMENT' });
+        this.props.globalStoreEventDistributor.dispatch({ type: 'DECREMENT' });
     };
 
     render() {

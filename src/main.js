@@ -1,13 +1,15 @@
 import { registerApplication, start } from 'single-spa';
 import { mainRegisterApplication, singleSpaAngularCliRouter } from 'single-spa-angular-cli/lib/utils';
 import { eachSeries } from 'async';
-import { GlobalEventDistributor } from './globalEventDistributor'
+import GlobalStoreEventDistributor from './GlobalStoreEventDistributor';
+import GlobalEventBus from './GlobalEventBus'
 import appStructure from '../mock/appStructure.json';
 import 'babel-polyfill';
 import 'zone.js';
 
 function init() {
-    const globalEventDistributor = new GlobalEventDistributor();
+    const globalStoreEventDistributor = new GlobalStoreEventDistributor();
+    const globalEventBus = new GlobalEventBus();
     let store = {};
     start();
     //load the apps
@@ -18,7 +20,7 @@ function init() {
         const registerApp = isMain ? mainRegisterApplication : loadNotMain;
 
         if (storeUrl) {
-           store = await loadStore(storeUrl, globalEventDistributor);
+           store = await loadStore(storeUrl, globalStoreEventDistributor);
         }
         registerApp(appName, () => SystemJS.import(appUrl), singleSpaAngularCliRouter.hashPrefix(route, true), store).then(() => {
             callback();
@@ -33,15 +35,15 @@ const loadNotMain = (appName, importFunc, routeFunc, store) => {
     return Promise.resolve();
 };
 
-const loadStore = async (storeURL, globalEventDistributor) => {
+const loadStore = async (storeURL, globalStoreEventDistributor) => {
     // import the store module
     const storeModule = storeURL ? await SystemJS.import(storeURL) : {storeInstance: null};
 
-    // register the store with the globalEventDistributor
-    if (storeModule.storeInstance && globalEventDistributor)
-        globalEventDistributor.registerStore(storeModule.storeInstance);
-    // register the app with singleSPA and pass a reference to the store of the app as well as a reference to the globalEventDistributor
-    return { store: storeModule.storeInstance, globalEventDistributor: globalEventDistributor };
+    // register the store with the globalStoreEventDistributor
+    if (storeModule.storeInstance && globalStoreEventDistributor)
+    globalStoreEventDistributor.registerStore(storeModule.storeInstance);
+    // register the app with singleSPA and pass a reference to the store of the app as well as a reference to the globalStoreEventDistributor
+    return { store: storeModule.storeInstance, globalStoreEventDistributor: globalStoreEventDistributor };
 }
 
 init();

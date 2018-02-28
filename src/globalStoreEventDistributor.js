@@ -1,4 +1,4 @@
-export class GlobalEventDistributor {
+export default class GlobalStoreEventDistributor {
 
     constructor() {
         this.stores = [];

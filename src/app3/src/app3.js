@@ -17,7 +17,7 @@ export function bootstrap(props) {
 export function mount(props) {
 	return reactLifecycles.mount(props).then((rootComponent) => {
         rootComponent.setStore(props.customProps.store);
-        rootComponent.setGlobalEventDistributor(props.customProps.globalEventDistributor);
+        rootComponent.setGlobalStoreEventDistributor(props.customProps.globalStoreEventDistributor);
     });
 }
 
